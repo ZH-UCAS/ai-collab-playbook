@@ -3,8 +3,8 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import html
 import re
-import shutil
 import subprocess
 import tarfile
 import urllib.request
@@ -157,8 +157,29 @@ def main() -> None:
             source_status.append(f"- GitHub: existing clone found at repo/{clone_name}.")
 
     template = Path(args.template).expanduser().resolve()
-    if template.exists() and not (out / "index.html").exists():
-        shutil.copyfile(template, out / "index.html")
+    index_path = out / "index.html"
+    if template.exists() and not index_path.exists():
+        title = args.title.strip()
+        short_title = title if len(title) <= 48 else f"{title[:45]}..."
+        source_badge = (
+            f"arXiv {arxiv_id(args.arxiv)}"
+            if args.arxiv
+            else "GitHub source" if args.github else "Source pending"
+        )
+        replacements = {
+            "__TITLE__": title,
+            "__SHORT_TITLE__": short_title,
+            "__DESCRIPTION__": f"Source-grounded deep-reading notes for {title}",
+            "__DATE__": dt.date.today().isoformat(),
+            "__TAGS__": "paper-reading,research",
+            "__BADGE_1__": "Deep Reading",
+            "__BADGE_2__": source_badge,
+            "__SUBTITLE__": "Source-grounded Chinese deep-reading notes",
+        }
+        index_html = template.read_text(encoding="utf-8")
+        for placeholder, value in replacements.items():
+            index_html = index_html.replace(placeholder, html.escape(value, quote=True))
+        index_path.write_text(index_html, encoding="utf-8")
 
     visibility = "private-only" if args.private_only else "public blog HTML"
     boundary = [

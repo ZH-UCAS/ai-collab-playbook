@@ -31,7 +31,6 @@ If you want to go back to the repository homepage, see [`../../README.en.md`](..
 
 - [`proactive-explorer/`](proactive-explorer/): formalize the habit of exploring facts before asking the user for information.
 - [`all-plan/`](all-plan/): a lightweight multi-perspective planning entry point with scoring and correction loops.
-- [`human-machine-brainstorm/`](human-machine-brainstorm/): a CCB-flavored human-in-the-loop brainstorming workflow rather than a universal multi-agent framework.
 - [`spec-first-mvp/`](spec-first-mvp/): add a small gate for exciting ideas by writing a spec seed, running a throwaway MVP probe, and only then deciding whether to enter full design or implementation.
 - [`prompt-polisher/`](prompt-polisher/): turn messy notes or transcripts into a better prompt for Claude 4.x style workflows.
 - [`session-recovery-codex/`](session-recovery-codex/): recover Codex session state from a session id or recent session list.

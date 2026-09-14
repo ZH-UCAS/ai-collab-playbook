@@ -9,12 +9,12 @@ description: Use when the user wants multi-agent division of labor for research-
 
 Use this skill for research-led work where implementation and evidence gathering are coupled, but the main agent should remain the lead. It keeps the critical path local while bounded sidecars handle non-blocking scout, worker, verifier, or writer tasks.
 
-Under `一路畅行`, this is the default delegation shape once approval exists: one lead owns framing, synthesis, and user-facing updates while 1-2 bounded sidecars help without taking over the mission.
+After the user approves an execution contract, use this as the default delegation shape: one lead owns framing, synthesis, and user-facing updates while 1-2 bounded sidecars help without taking over the mission.
 
 ## Rules
 
 - Keep the lead responsible for framing, synthesis, and final decisions.
-- If `一路畅行` alignment is not approved yet, do not launch sidecars. First encode the sidecar plan in the execution contract.
+- If the sidecar plan has not been approved yet, do not launch sidecars. First encode the roles and scopes in the execution contract.
 - Delegate only tasks that are non-blocking, bounded, inspectable, and recoverable.
 - Prefer 1-2 sidecars with clear roles instead of spawning a crowd by default.
 - The lead should keep moving on the critical path instead of waiting idly for sidecars.
@@ -38,9 +38,9 @@ Do not use when:
 - several agents would need to touch the same hot files or same narrow context
 - handoff cost is higher than simply doing the work locally
 
-## Yilu Compatibility
+## Execution Contract
 
-When used under `一路畅行`, keep the protocol aligned:
+When using this skill under an approved execution contract, keep the protocol aligned:
 
 - During alignment:
   - say why `lead-sidecar` is the chosen lane
